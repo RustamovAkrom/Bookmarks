@@ -11,6 +11,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
+    'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -94,3 +95,9 @@ LOGIN_REDIRECT_URL = 'dashboard'
 # LOGOUT_REDIRECT_URL = '/account/logout'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]

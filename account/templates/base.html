@@ -11,7 +11,7 @@
 <body>
     <div class="container-fluid">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom" >
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
               <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
               <span class="fs-4">Bookmakers</span>
             </a>
@@ -40,7 +40,16 @@
                 {% endif %}
             </ul>
         </header>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message|safe }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
+
     <div class="container">
         {% block content %}
         {% endblock %}
@@ -63,5 +72,6 @@
             </ul>
         </footer>
         </div>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>

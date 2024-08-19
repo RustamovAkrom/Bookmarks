@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from .models import Profile
 
 
@@ -27,6 +28,17 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError("Passwords don`t match.")
         return cd['password2']
+    
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        qs = User.objects.exclude(
+            id=self.instance.id
+        ).filter(
+            email=data
+        )
+        if qs.exists():
+            raise forms.ValidationError('Email already in use.')
+        return data
     
 
 class UserEditForm(forms.ModelForm):
