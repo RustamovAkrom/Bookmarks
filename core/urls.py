@@ -23,7 +23,8 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('account/', include('account.urls'))
+    path('account/', include('apps.account.urls')),
+    path('social-auth', include('social_django.urls', namespace='social'))
 ]
 
 

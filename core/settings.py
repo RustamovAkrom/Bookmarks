@@ -6,12 +6,19 @@ SECRET_KEY = 'django-insecure-d=n+bp^1jral=tfaj76ctx9y4#)ic+jqj((1mvhr14marwqrq8
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 INSTALLED_APPS = [
+    # my site apps
     'account.apps.AccountConfig',
+    'images.apps.ImagesConfig',
+
+    # installed apps
     'social_django',
+    'django_extensions',
+
+    # default django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -100,4 +107,7 @@ LOGOUT_URL = 'logout'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.google.GoogleOAuth2',
 ]
+
+# https://console.cloud.google.com/projectcreate 
