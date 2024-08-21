@@ -11,13 +11,13 @@ ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     # my site apps
-    'account.apps.AccountConfig',
-    'images.apps.ImagesConfig',
+    'apps.account.apps.AccountConfig',
+    'apps.images.apps.ImagesConfig',
 
     # installed apps
     'social_django',
     'django_extensions',
-
+    
     # default django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -42,7 +43,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,10 +105,9 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 
+# https://console.cloud.google.com/projectcreate 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'account.authentication.EmailAuthBackend',
+    'apps.account.authentication.EmailAuthBackend',
     'social_core.backends.google.GoogleOAuth2',
 ]
-
-# https://console.cloud.google.com/projectcreate 

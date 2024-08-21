@@ -4,3 +4,4 @@ django-extensions==3.2.3
 werkzeug==3.0.2
 pyOpenSSL==24.1.0
 python-decouple==3.8
+requests==2.31.0

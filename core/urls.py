@@ -24,7 +24,8 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('apps.account.urls')),
-    path('social-auth', include('social_django.urls', namespace='social'))
+    path('social-auth', include('social_django.urls', namespace='social')),
+    path('images/', include('apps.images.urls', namespace='images')),
 ]
 
 
